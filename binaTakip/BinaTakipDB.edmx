@@ -11,6 +11,7 @@
     <EntitySet Name="OdemelerSet" EntityType="dbB703CB358AModel.Store.OdemelerSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="OgSet" EntityType="dbB703CB358AModel.Store.OgSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BinalarSet" EntityType="dbB703CB358AModel.Store.BinalarSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsersSet" EntityType="dbB703CB358AModel.Store.UsersSet" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="dairelerSet">
     <Key>
@@ -20,7 +21,7 @@
     <Property Name="daireno" Type="int" Nullable="false" />
     <Property Name="kisi_id" Type="int" Nullable="false" />
     <Property Name="ev_sahibi_id" Type="int" Nullable="false" />
-    <Property Name="binaId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="binaId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="kisilerSet">
     <Key>
@@ -29,6 +30,7 @@
     <Property Name="kisiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="isim" Type="nvarchar(max)" Nullable="false" />
     <Property Name="telefon" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="bina_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OdemelerSet">
     <Key>
@@ -38,9 +40,7 @@
     <Property Name="daireId" Type="int" Nullable="false" />
     <Property Name="tutar" Type="float" Nullable="false" />
     <Property Name="tarih" Type="datetime" Nullable="false" />
-    <Property Name="Ogid" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="daireler_daireId" Type="int" Nullable="false" />
-    <Property Name="Og_OgId" Type="int" Nullable="false" />
+    <Property Name="Ogid" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OgSet">
     <Key>
@@ -61,6 +61,16 @@
     <Property Name="BinaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="binaAdi" Type="nvarchar(max)" Nullable="false" />
     <Property Name="daireSayisi" Type="int" Nullable="false" />
+    <Property Name="userId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsersSet">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullanici_adi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="sifre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="onay" Type="bit" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -74,7 +84,7 @@
           <Property Name="daireno" Type="Int32" Nullable="false" />
           <Property Name="kisi_id" Type="Int32" Nullable="false" />
           <Property Name="ev_sahibi_id" Type="Int32" Nullable="false" />
-          <Property Name="binaId" Type="String" Nullable="false" />
+          <Property Name="binaId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="kisilerSet">
           <Key>
@@ -83,6 +93,7 @@
           <Property Name="kisiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="isim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bina_id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="OdemelerSet">
           <Key>
@@ -92,9 +103,7 @@
           <Property Name="daireId" Type="Int32" Nullable="false" />
           <Property Name="tutar" Type="Double" Nullable="false" />
           <Property Name="tarih" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Ogid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="daireler_daireId" Type="Int32" Nullable="false" />
-          <Property Name="Og_OgId" Type="Int32" Nullable="false" />
+          <Property Name="Ogid" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="OgSet">
           <Key>
@@ -114,6 +123,7 @@
           <EntitySet Name="OdemelerSet" EntityType="Self.OdemelerSet" />
           <EntitySet Name="OgSet" EntityType="Self.OgSet" />
           <EntitySet Name="BinalarSet" EntityType="dbB703CB358AModel.Binalar" />
+          <EntitySet Name="UsersSet" EntityType="dbB703CB358AModel.Users" />
         </EntityContainer>
         <EntityType Name="Binalar">
           <Key>
@@ -122,6 +132,16 @@
           <Property Name="BinaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="binaAdi" Type="String" Nullable="false" />
           <Property Name="daireSayisi" Type="Int32" Nullable="false" />
+          <Property Name="userId" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullanici_adi" Type="String" Nullable="false" />
+          <Property Name="sifre" Type="String" Nullable="false" />
+          <Property Name="onay" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -146,6 +166,7 @@
           <ScalarProperty Name="kisiId" ColumnName="kisiId" />
           <ScalarProperty Name="isim" ColumnName="isim" />
           <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="bina_id" ColumnName="bina_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -157,8 +178,6 @@
           <ScalarProperty Name="tutar" ColumnName="tutar" />
           <ScalarProperty Name="tarih" ColumnName="tarih" />
           <ScalarProperty Name="Ogid" ColumnName="Ogid" />
-          <ScalarProperty Name="daireler_daireId" ColumnName="daireler_daireId" />
-          <ScalarProperty Name="Og_OgId" ColumnName="Og_OgId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -181,6 +200,17 @@
           <ScalarProperty Name="BinaId" ColumnName="BinaId" />
           <ScalarProperty Name="binaAdi" ColumnName="binaAdi" />
           <ScalarProperty Name="daireSayisi" ColumnName="daireSayisi" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersSet">
+      <EntityTypeMapping TypeName="IsTypeOf(dbB703CB358AModel.Users)">
+        <MappingFragment StoreEntitySet="UsersSet">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="kullanici_adi" ColumnName="kullanici_adi" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="onay" ColumnName="onay" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

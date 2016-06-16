@@ -18,8 +18,6 @@ namespace binaTakip
         public int daireId { get; set; }
         public double tutar { get; set; }
         public System.DateTime tarih { get; set; }
-        public string Ogid { get; set; }
-        public int daireler_daireId { get; set; }
-        public int Og_OgId { get; set; }
+        public int Ogid { get; set; }
     }
 }

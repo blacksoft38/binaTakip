@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/16/2016 21:36:24
+-- Date Created: 06/17/2016 00:43:14
 -- Generated from EDMX file: C:\Users\hp\Documents\Visual Studio 2015\Projects\binaTakip\binaTakip\BinaTakipDB.edmx
 -- --------------------------------------------------
 
@@ -17,15 +17,6 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_dairelerOdemeler]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[OdemelerSet] DROP CONSTRAINT [FK_dairelerOdemeler];
-GO
-IF OBJECT_ID(N'[dbo].[FK_OgOdemeler]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[OdemelerSet] DROP CONSTRAINT [FK_OgOdemeler];
-GO
-IF OBJECT_ID(N'[dbo].[FK_BinalardairelerSet]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[dairelerSet] DROP CONSTRAINT [FK_BinalardairelerSet];
-GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -57,7 +48,7 @@ CREATE TABLE [dbo].[dairelerSet] (
     [daireno] int  NOT NULL,
     [kisi_id] int  NOT NULL,
     [ev_sahibi_id] int  NOT NULL,
-    [binaId] nvarchar(max)  NOT NULL
+    [binaId] int  NOT NULL
 );
 GO
 
@@ -65,7 +56,8 @@ GO
 CREATE TABLE [dbo].[kisilerSet] (
     [kisiId] int IDENTITY(1,1) NOT NULL,
     [isim] nvarchar(max)  NOT NULL,
-    [telefon] nvarchar(max)  NOT NULL
+    [telefon] nvarchar(max)  NOT NULL,
+    [bina_id] int  NOT NULL
 );
 GO
 
@@ -75,9 +67,7 @@ CREATE TABLE [dbo].[OdemelerSet] (
     [daireId] int  NOT NULL,
     [tutar] float  NOT NULL,
     [tarih] datetime  NOT NULL,
-    [Ogid] nvarchar(max)  NOT NULL,
-    [daireler_daireId] int  NOT NULL,
-    [Og_OgId] int  NOT NULL
+    [Ogid] int  NOT NULL
 );
 GO
 
@@ -97,7 +87,17 @@ GO
 CREATE TABLE [dbo].[BinalarSet] (
     [BinaId] int IDENTITY(1,1) NOT NULL,
     [binaAdi] nvarchar(max)  NOT NULL,
-    [daireSayisi] int  NOT NULL
+    [daireSayisi] int  NOT NULL,
+    [userId] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'UsersSet'
+CREATE TABLE [dbo].[UsersSet] (
+    [userId] int IDENTITY(1,1) NOT NULL,
+    [kullanici_adi] nvarchar(max)  NOT NULL,
+    [sifre] nvarchar(max)  NOT NULL,
+    [onay] bit  NOT NULL
 );
 GO
 
@@ -133,6 +133,12 @@ GO
 ALTER TABLE [dbo].[BinalarSet]
 ADD CONSTRAINT [PK_BinalarSet]
     PRIMARY KEY CLUSTERED ([BinaId] ASC);
+GO
+
+-- Creating primary key on [userId] in table 'UsersSet'
+ALTER TABLE [dbo].[UsersSet]
+ADD CONSTRAINT [PK_UsersSet]
+    PRIMARY KEY CLUSTERED ([userId] ASC);
 GO
 
 -- --------------------------------------------------

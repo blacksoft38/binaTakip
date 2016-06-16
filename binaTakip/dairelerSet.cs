@@ -18,6 +18,6 @@ namespace binaTakip
         public int daireno { get; set; }
         public int kisi_id { get; set; }
         public int ev_sahibi_id { get; set; }
-        public string binaId { get; set; }
+        public int binaId { get; set; }
     }
 }

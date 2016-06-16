@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="312170a516e5469fb39c679113298a1d" Name="Diagram1" DisplayType="true">
+      <Diagram DiagramId="312170a516e5469fb39c679113298a1d" Name="Diagram1" DisplayType="true" ShowGrid="false">
         <EntityTypeShape EntityType="dbB703CB358AModel.dairelerSet" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbB703CB358AModel.kisilerSet" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbB703CB358AModel.kisilerSet" Width="1.5" PointX="2.625" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbB703CB358AModel.OdemelerSet" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbB703CB358AModel.OgSet" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbB703CB358AModel.Binalar" Width="1.5" PointX="6.125" PointY="1.75" />
+        <EntityTypeShape EntityType="dbB703CB358AModel.OgSet" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbB703CB358AModel.Binalar" Width="1.5" PointX="4.75" PointY="1.125" />
+        <EntityTypeShape EntityType="dbB703CB358AModel.Users" Width="2.375" PointX="6.875" PointY="1.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

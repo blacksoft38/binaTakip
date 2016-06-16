@@ -30,5 +30,6 @@ namespace binaTakip
         public DbSet<OdemelerSet> OdemelerSet { get; set; }
         public DbSet<OgSet> OgSet { get; set; }
         public DbSet<Binalar> BinalarSet { get; set; }
+        public DbSet<Users> UsersSet { get; set; }
     }
 }

@@ -12,11 +12,11 @@ namespace binaTakip
     using System;
     using System.Collections.Generic;
     
-    public partial class kisilerSet
+    public partial class Users
     {
-        public int kisiId { get; set; }
-        public string isim { get; set; }
-        public string telefon { get; set; }
-        public int bina_id { get; set; }
+        public int userId { get; set; }
+        public string kullanici_adi { get; set; }
+        public string sifre { get; set; }
+        public bool onay { get; set; }
     }
 }

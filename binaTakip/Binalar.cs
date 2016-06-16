@@ -17,5 +17,6 @@ namespace binaTakip
         public int BinaId { get; set; }
         public string binaAdi { get; set; }
         public int daireSayisi { get; set; }
+        public string userId { get; set; }
     }
 }
