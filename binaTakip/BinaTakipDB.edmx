@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbB703CB358AModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dairelerSet">
+          <Key>
+            <PropertyRef Name="daireId" />
+          </Key>
+          <Property Name="daireId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="daireno" Type="int" Nullable="false" />
+          <Property Name="kisi_id" Type="int" Nullable="false" />
+          <Property Name="ev_sahibi_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kisilerSet">
+          <Key>
+            <PropertyRef Name="kisiId" />
+          </Key>
+          <Property Name="kisiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isim" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telefon" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OdemelerSet">
+          <Key>
+            <PropertyRef Name="OdemeID" />
+          </Key>
+          <Property Name="OdemeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="daireId" Type="int" Nullable="false" />
+          <Property Name="tutar" Type="float" Nullable="false" />
+          <Property Name="tarih" Type="datetime" Nullable="false" />
+          <Property Name="Ogid" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="daireler_daireId" Type="int" Nullable="false" />
+          <Property Name="Og_OgId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OgSet">
+          <Key>
+            <PropertyRef Name="OgId" />
+          </Key>
+          <Property Name="OgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tutar" Type="float" Nullable="false" />
+          <Property Name="Tur" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="isim" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="taksitli" Type="bit" Nullable="false" />
+          <Property Name="taksitlitutar" Type="float" />
+          <Property Name="taksitsayisi" Type="int" />
+        </EntityType>
+        <Association Name="FK_dairelerOdemeler">
+          <End Role="dairelerSet" Type="Self.dairelerSet" Multiplicity="1" />
+          <End Role="OdemelerSet" Type="Self.OdemelerSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dairelerSet">
+              <PropertyRef Name="daireId" />
+            </Principal>
+            <Dependent Role="OdemelerSet">
+              <PropertyRef Name="daireler_daireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgOdemeler">
+          <End Role="OgSet" Type="Self.OgSet" Multiplicity="1" />
+          <End Role="OdemelerSet" Type="Self.OdemelerSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OgSet">
+              <PropertyRef Name="OgId" />
+            </Principal>
+            <Dependent Role="OdemelerSet">
+              <PropertyRef Name="Og_OgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbB703CB358AModelStoreContainer">
+          <EntitySet Name="dairelerSet" EntityType="Self.dairelerSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kisilerSet" EntityType="Self.kisilerSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OdemelerSet" EntityType="Self.OdemelerSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OgSet" EntityType="Self.OgSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dairelerOdemeler" Association="Self.FK_dairelerOdemeler">
+            <End Role="dairelerSet" EntitySet="dairelerSet" />
+            <End Role="OdemelerSet" EntitySet="OdemelerSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgOdemeler" Association="Self.FK_OgOdemeler">
+            <End Role="OgSet" EntitySet="OgSet" />
+            <End Role="OdemelerSet" EntitySet="OdemelerSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbB703CB358AModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="dairelerSet">
+          <Key>
+            <PropertyRef Name="daireId" />
+          </Key>
+          <Property Name="daireId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="daireno" Type="Int32" Nullable="false" />
+          <Property Name="kisi_id" Type="Int32" Nullable="false" />
+          <Property Name="ev_sahibi_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OdemelerSet" Relationship="Self.FK_dairelerOdemeler" FromRole="dairelerSet" ToRole="OdemelerSet" />
+        </EntityType>
+        <EntityType Name="kisilerSet">
+          <Key>
+            <PropertyRef Name="kisiId" />
+          </Key>
+          <Property Name="kisiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="isim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OdemelerSet">
+          <Key>
+            <PropertyRef Name="OdemeID" />
+          </Key>
+          <Property Name="OdemeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="daireId" Type="Int32" Nullable="false" />
+          <Property Name="tutar" Type="Double" Nullable="false" />
+          <Property Name="tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Ogid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="daireler_daireId" Type="Int32" Nullable="false" />
+          <Property Name="Og_OgId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="dairelerSet" Relationship="Self.FK_dairelerOdemeler" FromRole="OdemelerSet" ToRole="dairelerSet" />
+          <NavigationProperty Name="OgSet" Relationship="Self.FK_OgOdemeler" FromRole="OdemelerSet" ToRole="OgSet" />
+        </EntityType>
+        <EntityType Name="OgSet">
+          <Key>
+            <PropertyRef Name="OgId" />
+          </Key>
+          <Property Name="OgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tutar" Type="Double" Nullable="false" />
+          <Property Name="Tur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="taksitli" Type="Boolean" Nullable="false" />
+          <Property Name="taksitlitutar" Type="Double" />
+          <Property Name="taksitsayisi" Type="Int32" />
+          <NavigationProperty Name="OdemelerSet" Relationship="Self.FK_OgOdemeler" FromRole="OgSet" ToRole="OdemelerSet" />
+        </EntityType>
+        <Association Name="FK_dairelerOdemeler">
+          <End Role="dairelerSet" Type="Self.dairelerSet" Multiplicity="1" />
+          <End Role="OdemelerSet" Type="Self.OdemelerSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dairelerSet">
+              <PropertyRef Name="daireId" />
+            </Principal>
+            <Dependent Role="OdemelerSet">
+              <PropertyRef Name="daireler_daireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgOdemeler">
+          <End Role="OgSet" Type="Self.OgSet" Multiplicity="1" />
+          <End Role="OdemelerSet" Type="Self.OdemelerSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OgSet">
+              <PropertyRef Name="OgId" />
+            </Principal>
+            <Dependent Role="OdemelerSet">
+              <PropertyRef Name="Og_OgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbB703CB358AEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dairelerSet" EntityType="Self.dairelerSet" />
+          <EntitySet Name="kisilerSet" EntityType="Self.kisilerSet" />
+          <EntitySet Name="OdemelerSet" EntityType="Self.OdemelerSet" />
+          <EntitySet Name="OgSet" EntityType="Self.OgSet" />
+          <AssociationSet Name="FK_dairelerOdemeler" Association="Self.FK_dairelerOdemeler">
+            <End Role="dairelerSet" EntitySet="dairelerSet" />
+            <End Role="OdemelerSet" EntitySet="OdemelerSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgOdemeler" Association="Self.FK_OgOdemeler">
+            <End Role="OgSet" EntitySet="OgSet" />
+            <End Role="OdemelerSet" EntitySet="OdemelerSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbB703CB358AModelStoreContainer" CdmEntityContainer="dbB703CB358AEntities1">
+          <EntitySetMapping Name="dairelerSet">
+            <EntityTypeMapping TypeName="dbB703CB358AModel.dairelerSet">
+              <MappingFragment StoreEntitySet="dairelerSet">
+                <ScalarProperty Name="daireId" ColumnName="daireId" />
+                <ScalarProperty Name="daireno" ColumnName="daireno" />
+                <ScalarProperty Name="kisi_id" ColumnName="kisi_id" />
+                <ScalarProperty Name="ev_sahibi_id" ColumnName="ev_sahibi_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kisilerSet">
+            <EntityTypeMapping TypeName="dbB703CB358AModel.kisilerSet">
+              <MappingFragment StoreEntitySet="kisilerSet">
+                <ScalarProperty Name="kisiId" ColumnName="kisiId" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OdemelerSet">
+            <EntityTypeMapping TypeName="dbB703CB358AModel.OdemelerSet">
+              <MappingFragment StoreEntitySet="OdemelerSet">
+                <ScalarProperty Name="OdemeID" ColumnName="OdemeID" />
+                <ScalarProperty Name="daireId" ColumnName="daireId" />
+                <ScalarProperty Name="tutar" ColumnName="tutar" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="Ogid" ColumnName="Ogid" />
+                <ScalarProperty Name="daireler_daireId" ColumnName="daireler_daireId" />
+                <ScalarProperty Name="Og_OgId" ColumnName="Og_OgId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OgSet">
+            <EntityTypeMapping TypeName="dbB703CB358AModel.OgSet">
+              <MappingFragment StoreEntitySet="OgSet">
+                <ScalarProperty Name="OgId" ColumnName="OgId" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="Tur" ColumnName="Tur" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="taksitli" ColumnName="taksitli" />
+                <ScalarProperty Name="taksitlitutar" ColumnName="taksitlitutar" />
+                <ScalarProperty Name="taksitsayisi" ColumnName="taksitsayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
