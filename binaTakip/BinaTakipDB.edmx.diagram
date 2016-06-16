@@ -4,13 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="312170a516e5469fb39c679113298a1d" Name="Diagram1">
+      <Diagram DiagramId="312170a516e5469fb39c679113298a1d" Name="Diagram1" DisplayType="true">
         <EntityTypeShape EntityType="dbB703CB358AModel.dairelerSet" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="dbB703CB358AModel.kisilerSet" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbB703CB358AModel.OdemelerSet" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="dbB703CB358AModel.OgSet" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <AssociationConnector Association="dbB703CB358AModel.FK_dairelerOdemeler" ManuallyRouted="false" />
-        <AssociationConnector Association="dbB703CB358AModel.FK_OgOdemeler" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dbB703CB358AModel.Binalar" Width="1.5" PointX="6.125" PointY="1.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

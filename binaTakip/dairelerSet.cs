@@ -14,16 +14,10 @@ namespace binaTakip
     
     public partial class dairelerSet
     {
-        public dairelerSet()
-        {
-            this.OdemelerSet = new HashSet<OdemelerSet>();
-        }
-    
         public int daireId { get; set; }
         public int daireno { get; set; }
         public int kisi_id { get; set; }
         public int ev_sahibi_id { get; set; }
-    
-        public virtual ICollection<OdemelerSet> OdemelerSet { get; set; }
+        public string binaId { get; set; }
     }
 }

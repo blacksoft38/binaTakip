@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binalar.cs">
+      <DependentUpon>BinaTakipDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="BinaTakipDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -131,6 +134,7 @@
       <DependentUpon>BinaTakipDB.edmx</DependentUpon>
       <LastGenOutput>BinaTakipDB.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="BinaTakipDB.edmx.sql" />
     <Content Include="BinaTakipDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BinaTakipDB.edmx</DependentUpon>

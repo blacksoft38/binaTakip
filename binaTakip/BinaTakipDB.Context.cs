@@ -29,5 +29,6 @@ namespace binaTakip
         public DbSet<kisilerSet> kisilerSet { get; set; }
         public DbSet<OdemelerSet> OdemelerSet { get; set; }
         public DbSet<OgSet> OgSet { get; set; }
+        public DbSet<Binalar> BinalarSet { get; set; }
     }
 }

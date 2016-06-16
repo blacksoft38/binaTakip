@@ -14,11 +14,6 @@ namespace binaTakip
     
     public partial class OgSet
     {
-        public OgSet()
-        {
-            this.OdemelerSet = new HashSet<OdemelerSet>();
-        }
-    
         public int OgId { get; set; }
         public double Tutar { get; set; }
         public string Tur { get; set; }
@@ -26,7 +21,5 @@ namespace binaTakip
         public bool taksitli { get; set; }
         public Nullable<double> taksitlitutar { get; set; }
         public Nullable<int> taksitsayisi { get; set; }
-    
-        public virtual ICollection<OdemelerSet> OdemelerSet { get; set; }
     }
 }

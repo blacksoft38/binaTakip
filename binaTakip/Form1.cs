@@ -20,10 +20,25 @@ namespace binaTakip
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dbB703CB358AEntities1 d = new dbB703CB358AEntities1();
-            var dai = from dairelerSet in d.dairelerSet select dairelerSet;
-            dataGridView1.DataSource = dai.ToList();
+            reload();
 
+        }
+        public void reload()
+        {
+            dbB703CB358AEntities1 d = new dbB703CB358AEntities1();
+            var dai = from Binalar in d.BinalarSet select Binalar;
+            dataGridView1.DataSource = dai.ToList();
+            dataGridView1.Columns[0].Visible = false;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Binalar bn = new Binalar();
+            bn.binaAdi = textBox1.Text;
+            bn.daireSayisi = Convert.ToInt32(textBox2.Text);
+            dbB703CB358AEntities1 ent = new dbB703CB358AEntities1();
+            ent.BinalarSet.Add(bn);
+            ent.SaveChanges();
+            reload();
         }
     }
 }

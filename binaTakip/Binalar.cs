@@ -12,14 +12,10 @@ namespace binaTakip
     using System;
     using System.Collections.Generic;
     
-    public partial class OdemelerSet
+    public partial class Binalar
     {
-        public int OdemeID { get; set; }
-        public int daireId { get; set; }
-        public double tutar { get; set; }
-        public System.DateTime tarih { get; set; }
-        public string Ogid { get; set; }
-        public int daireler_daireId { get; set; }
-        public int Og_OgId { get; set; }
+        public int BinaId { get; set; }
+        public string binaAdi { get; set; }
+        public int daireSayisi { get; set; }
     }
 }
