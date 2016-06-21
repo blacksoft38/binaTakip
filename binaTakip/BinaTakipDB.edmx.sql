@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/17/2016 00:43:14
+-- Date Created: 06/17/2016 17:40:24
 -- Generated from EDMX file: C:\Users\hp\Documents\Visual Studio 2015\Projects\binaTakip\binaTakip\BinaTakipDB.edmx
 -- --------------------------------------------------
 
@@ -37,6 +37,9 @@ GO
 IF OBJECT_ID(N'[dbo].[BinalarSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[BinalarSet];
 GO
+IF OBJECT_ID(N'[dbo].[UsersSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UsersSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -57,7 +60,8 @@ CREATE TABLE [dbo].[kisilerSet] (
     [kisiId] int IDENTITY(1,1) NOT NULL,
     [isim] nvarchar(max)  NOT NULL,
     [telefon] nvarchar(max)  NOT NULL,
-    [bina_id] int  NOT NULL
+    [bina_id] int  NOT NULL,
+    [daire_id] int  NOT NULL
 );
 GO
 

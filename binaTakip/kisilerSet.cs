@@ -18,5 +18,6 @@ namespace binaTakip
         public string isim { get; set; }
         public string telefon { get; set; }
         public int bina_id { get; set; }
+        public int daire_id { get; set; }
     }
 }

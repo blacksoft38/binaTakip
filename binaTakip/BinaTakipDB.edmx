@@ -31,6 +31,7 @@
     <Property Name="isim" Type="nvarchar(max)" Nullable="false" />
     <Property Name="telefon" Type="nvarchar(max)" Nullable="false" />
     <Property Name="bina_id" Type="int" Nullable="false" />
+    <Property Name="daire_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OdemelerSet">
     <Key>
@@ -94,6 +95,7 @@
           <Property Name="isim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="bina_id" Type="Int32" Nullable="false" />
+          <Property Name="daire_id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="OdemelerSet">
           <Key>
@@ -167,6 +169,7 @@
           <ScalarProperty Name="isim" ColumnName="isim" />
           <ScalarProperty Name="telefon" ColumnName="telefon" />
           <ScalarProperty Name="bina_id" ColumnName="bina_id" />
+          <ScalarProperty Name="daire_id" ColumnName="daire_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
